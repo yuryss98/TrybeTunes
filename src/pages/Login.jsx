@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { createUser } from '../services/userAPI';
+import Loading from './Loading';
 
 export default class Login extends Component {
   constructor() {
@@ -8,6 +9,7 @@ export default class Login extends Component {
     this.state = {
       digiteSeuNome: '',
       disabledButton: true,
+      loading: false,
     };
   }
 
@@ -27,16 +29,21 @@ export default class Login extends Component {
   }
 
   saveName = async () => {
+    this.setState({
+      loading: true,
+    });
     const { digiteSeuNome } = this.state;
     const obj = { name: digiteSeuNome };
-    const { history: { push } } = this.props;
-    push('/loading');
     await createUser(obj);
-    push('/search');
+    const { history: { push } } = this.props;
+    push('./search');
   }
 
   render() {
-    const { disabledButton } = this.state;
+    const { disabledButton, loading } = this.state;
+    if (loading) {
+      return <Loading />;
+    }
     return (
       <div data-testid="page-login">
         <form>
