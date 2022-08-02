@@ -9,6 +9,8 @@ export default class Album extends Component {
     super();
     this.state = {
       musicasEncontradas: [],
+      artistaName: '',
+      artistaAlbum: '',
     };
   }
 
@@ -20,30 +22,31 @@ export default class Album extends Component {
     const { match: { params: { id } } } = this.props;
     const response = await getMusics(id);
     this.setState({
-      musicasEncontradas: response,
+      musicasEncontradas: response.slice(1),
+      artistaName: response[0].artistName,
+      artistaAlbum: response[0].collectionName,
     });
   }
 
   render() {
-    const { musicasEncontradas } = this.state;
-    // console.log(musicasEncontradas);
+    const { musicasEncontradas, artistaAlbum, artistaName } = this.state;
 
     return (
       <div data-testid="page-album">
         <Header />
         Album
         {
-          musicasEncontradas.length > 0
-          && <p data-testid="artist-name">{ musicasEncontradas[0].artistName }</p>
-        }
-
-        {
-          musicasEncontradas.length > 0
-          && <p data-testid="album-name">{ musicasEncontradas[0].collectionName }</p>
-        }
-
-        {
-          musicasEncontradas.length > 0 && <MusicCard musicas={ musicasEncontradas } />
+          musicasEncontradas.length > 0 && (
+            <div>
+              <p data-testid="artist-name">{ artistaName }</p>
+              <p data-testid="album-name">{ artistaAlbum }</p>
+              <div>
+                {musicasEncontradas.map(
+                  (music) => <MusicCard key={ music.trackId } musica={ music } />,
+                )}
+              </div>
+            </div>
+          )
         }
       </div>
     );
