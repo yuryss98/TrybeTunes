@@ -14,7 +14,7 @@ export default class Search extends Component {
       loading: false,
       nomePesquisado: '',
       resultadoDaPesquisa: [],
-      pesquisaRestornouNada: '',
+      pesquisaRetornouNada: '',
     };
   }
 
@@ -47,7 +47,7 @@ export default class Search extends Component {
     }, () => {
       if (resultadoDaPesquisa.length === 0) {
         this.setState({
-          pesquisaRestornouNada: 'Nenhum álbum foi encontrado',
+          pesquisaRetornouNada: 'Nenhum álbum foi encontrado',
         });
       }
     });
@@ -60,7 +60,7 @@ export default class Search extends Component {
       loading,
       nomePesquisado,
       resultadoDaPesquisa,
-      pesquisaRestornouNada,
+      pesquisaRetornouNada,
     } = this.state;
     if (loading) {
       return <Loading />;
@@ -109,7 +109,7 @@ export default class Search extends Component {
         }
 
         {
-          !resultadoDaPesquisa.length && <p>{pesquisaRestornouNada}</p>
+          !resultadoDaPesquisa.length && <p>{pesquisaRetornouNada}</p>
         }
       </div>
     );
