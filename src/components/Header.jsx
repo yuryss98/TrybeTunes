@@ -28,9 +28,7 @@ export default class Header extends Component {
 
   render() {
     const { nameUser, loading } = this.state;
-    if (loading) {
-      return <Loading />;
-    }
+
     return (
       <header data-testid="header-component">
         <nav>
@@ -38,7 +36,12 @@ export default class Header extends Component {
           <Link to="/favorites" data-testid="link-to-favorites">Musicas Favoritas</Link>
           <Link to="/profile" data-testid="link-to-profile">Perfil</Link>
         </nav>
-        <p data-testid="header-user-name">{ nameUser }</p>
+        <h3 data-testid="header-user-name">
+          {
+            loading ? <Loading /> : nameUser
+          }
+
+        </h3>
       </header>
     );
   }

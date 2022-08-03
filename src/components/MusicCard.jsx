@@ -15,6 +15,7 @@ export default class MusicCard extends Component {
     const pegandoDoLocalStorage = await getFavoriteSongs();
     this.setState({
       musicasLocalStorage: pegandoDoLocalStorage,
+      musicasFavoritas: pegandoDoLocalStorage,
     }, () => {
       const { musica } = this.props;
       this.setState(({ musicasLocalStorage }) => ({
@@ -42,6 +43,9 @@ export default class MusicCard extends Component {
         musicasFavoritas: newFavorites,
         loading: false,
         isChecked: false,
+      }, () => {
+        const { handleChange } = this.props;
+        handleChange();
       });
     }
   }
@@ -89,4 +93,5 @@ MusicCard.propTypes = {
     previewUrl: PropTypes.string,
     trackId: PropTypes.number,
   }).isRequired,
+  handleChange: PropTypes.func.isRequired,
 };
