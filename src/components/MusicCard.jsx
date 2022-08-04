@@ -25,6 +25,7 @@ export default class MusicCard extends Component {
   }
 
   favoritarMusicas = async ({ target }, musica) => {
+    const { handleChange } = this.props;
     this.setState({
       loading: true,
     });
@@ -43,10 +44,7 @@ export default class MusicCard extends Component {
         musicasFavoritas: newFavorites,
         loading: false,
         isChecked: false,
-      }, () => {
-        const { handleChange } = this.props;
-        handleChange();
-      });
+      }, handleChange);
     }
   }
 
@@ -93,5 +91,9 @@ MusicCard.propTypes = {
     previewUrl: PropTypes.string,
     trackId: PropTypes.number,
   }).isRequired,
-  handleChange: PropTypes.func.isRequired,
+  handleChange: PropTypes.func,
+};
+
+MusicCard.defaultProps = {
+  handleChange: () => {},
 };
