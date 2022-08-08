@@ -2,6 +2,8 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { createUser } from '../services/userAPI';
 import Loading from './Loading';
+import '../style/login.css';
+import logo from '../LOGO_POSITIVA 1.png';
 
 export default class Login extends Component {
   constructor() {
@@ -45,28 +47,31 @@ export default class Login extends Component {
       return <Loading />;
     }
     return (
-      <div data-testid="page-login">
-        <form>
-          <label htmlFor="digiteSeuNome">
-            Digite seu nome:
-            <input
-              type="text"
-              name="digiteSeuNome"
-              id="digiteSeuNome"
-              data-testid="login-name-input"
-              onChange={ this.attEstadoEAtivaBotao }
-            />
-          </label>
-          <button
-            data-testid="login-submit-button"
-            type="button"
-            disabled={ disabledButton }
-            onClick={ this.saveName }
-          >
-            Entrar
+      <div data-testid="page-login" className="loginPage">
+        <section className="containerForm">
+          <form className="form">
+            <img src={ logo } alt="logo da trybe" />
+            <label htmlFor="digiteSeuNome">
+              <input
+                type="text"
+                name="digiteSeuNome"
+                id="digiteSeuNome"
+                data-testid="login-name-input"
+                placeholder="Digite seu nome"
+                onChange={ this.attEstadoEAtivaBotao }
+              />
+            </label>
+            <button
+              data-testid="login-submit-button"
+              type="button"
+              disabled={ disabledButton }
+              onClick={ this.saveName }
+            >
+              Entrar
 
-          </button>
-        </form>
+            </button>
+          </form>
+        </section>
       </div>
     );
   }

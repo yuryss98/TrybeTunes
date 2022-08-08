@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Header from '../components/Header';
 import { getUser, updateUser } from '../services/userAPI';
 import Loading from './Loading';
+import '../style/profileEdite.css';
 
 export default class ProfileEdit extends Component {
   state = {
@@ -80,49 +81,63 @@ export default class ProfileEdit extends Component {
 
         {
           loading ? <Loading /> : (
-            <form action="">
-              <input
-                type="text"
-                name="name"
-                defaultValue={ user.name }
-                id=""
-                data-testid="edit-input-name"
-                onChange={ this.handleChange }
-              />
-              <input
-                type="email"
-                name="email"
-                defaultValue={ user.email }
-                id=""
-                data-testid="edit-input-email"
-                onChange={ this.handleChange }
-              />
-              <textarea
-                name="description"
-                defaultValue={ user.description }
-                id=""
-                cols="30"
-                rows="10"
-                data-testid="edit-input-description"
-                onChange={ this.handleChange }
-              />
-              <input
-                type="text"
-                name="image"
-                defaultValue={ user.image }
-                id=""
-                data-testid="edit-input-image"
-                onChange={ this.handleChange }
-              />
-              <button
-                type="button"
-                data-testid="edit-button-save"
-                disabled={ isDisabled }
-                onClick={ this.salvarInformacoes }
-              >
-                Editar perfil
+            <form action="" className="editProfileForm">
+              <div className="divForm">
+                <div className="divInputs">
+                  <div>
+                    <h3>Nome</h3>
+                    <input
+                      type="text"
+                      name="name"
+                      defaultValue={ user.name }
+                      id=""
+                      data-testid="edit-input-name"
+                      onChange={ this.handleChange }
+                    />
+                    <h3>Email</h3>
+                    <input
+                      type="email"
+                      name="email"
+                      defaultValue={ user.email }
+                      id=""
+                      data-testid="edit-input-email"
+                      onChange={ this.handleChange }
+                    />
+                    <h3>Descrição</h3>
+                    <input
+                      className="descricao"
+                      type="text"
+                      name="description"
+                      defaultValue={ user.description }
+                      id=""
+                      onChange={ this.handleChange }
+                      data-testid="edit-input-description"
+                    />
+                    <h3>Imagem de perfil</h3>
+                    <input
+                      type="text"
+                      name="image"
+                      defaultValue={ user.image }
+                      id=""
+                      data-testid="edit-input-image"
+                      onChange={ this.handleChange }
+                    />
+                  </div>
+                  <div>
+                    <button
+                      className="salvarProfile"
+                      type="button"
+                      data-testid="edit-button-save"
+                      disabled={ isDisabled }
+                      onClick={ this.salvarInformacoes }
+                    >
+                      Editar perfil
 
-              </button>
+                    </button>
+                  </div>
+
+                </div>
+              </div>
             </form>
           )
         }

@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Loading from '../pages/Loading';
 import { getUser } from '../services/userAPI';
+import '../style/header.css';
 
 export default class Header extends Component {
   constructor() {
@@ -30,18 +31,39 @@ export default class Header extends Component {
     const { nameUser, loading } = this.state;
 
     return (
-      <header data-testid="header-component">
-        <nav>
-          <Link to="/search" data-testid="link-to-search">Pesquisar</Link>
-          <Link to="/favorites" data-testid="link-to-favorites">Musicas Favoritas</Link>
-          <Link to="/profile" data-testid="link-to-profile">Perfil</Link>
-        </nav>
-        <h3 data-testid="header-user-name">
+      <header data-testid="header-component" className="header">
+        <h3 data-testid="header-user-name" className="user">
           {
-            loading ? <Loading /> : nameUser
+            loading ? <Loading /> : <h3>{ `Bem vindo ${nameUser}!!` }</h3>
           }
 
         </h3>
+        <nav className="nav">
+          <Link
+            to="/search"
+            data-testid="link-to-search"
+            className="link"
+          >
+            Pesquisar
+
+          </Link>
+          <Link
+            to="/favorites"
+            data-testid="link-to-favorites"
+            className="link"
+          >
+            Musicas Favoritas
+
+          </Link>
+          <Link
+            to="/profile"
+            data-testid="link-to-profile"
+            className="link"
+          >
+            Perfil
+
+          </Link>
+        </nav>
       </header>
     );
   }

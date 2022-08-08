@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Header from '../components/Header';
 import getMusics from '../services/musicsAPI';
 import MusicCard from '../components/MusicCard';
+import '../style/album.css';
 
 export default class Album extends Component {
   constructor() {
@@ -34,13 +35,12 @@ export default class Album extends Component {
     return (
       <div data-testid="page-album">
         <Header />
-        Album
         {
           musicasEncontradas.length > 0 && (
             <div>
-              <p data-testid="artist-name">{ artistaName }</p>
-              <p data-testid="album-name">{ artistaAlbum }</p>
-              <div>
+              <p data-testid="artist-name" className="artistName">{ artistaName }</p>
+              <p data-testid="album-name" className="artistName">{ artistaAlbum }</p>
+              <div className="musics">
                 {musicasEncontradas.map(
                   (music) => <MusicCard key={ music.trackId } musica={ music } />,
                 )}

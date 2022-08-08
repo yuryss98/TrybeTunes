@@ -1,11 +1,11 @@
-// import PropTypes from 'prop-types'
 import React, { Component } from 'react';
+import '../style/loading.css';
 
 export default class Loading extends Component {
   render() {
     return (
       <div>
-        <p>Carregando...</p>
+        <i className="fa-solid fa-spinner" />
       </div>
     );
   }

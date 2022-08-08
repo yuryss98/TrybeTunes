@@ -1,0 +1,85 @@
+html {
+  background-color: gray;
+}
+
+.search {
+  height: 100vh;
+  width: 100vw;
+}
+
+.formSearch {
+  margin-top: 30px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.formSearch input {
+  background-color: #252A34;
+  color: #CBD0F7;
+  border: none;
+  height: 45px;
+  border-radius: 8px;
+  width: 350px;
+}
+
+.formSearch button {
+  color: black;
+  border: none;
+  border-radius: 5px;
+  background-color: #5568FE;
+  height: 40px;
+  width: 150px;
+  cursor: pointer;
+  font-size: 18px;
+  text-transform: uppercase;
+}
+
+.formSearch input::placeholder {
+  font-size: 18px;
+  text-align: center;
+  color: #CBD0F7;
+}
+
+.formSearch h2 {
+  font-size: 35px;
+  color: white;
+}
+
+.albunsEncontrados {
+  width: 150px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  background-color: #252A34;
+  color: #CBD0F7;
+
+}
+
+.albunsEncontrados img {
+  width: 100px;
+}
+
+.albunsEncontrados:hover {
+  opacity: 0.7;
+}
+
+.h3Search {
+  font-size: 30px;
+  color: white;
+  margin: 40px 40px 40px 70px;
+}
+
+.cardsMusics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+}
+

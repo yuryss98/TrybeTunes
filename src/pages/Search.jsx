@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import searchAlbumsAPI from '../services/searchAlbumsAPI';
 import Loading from './Loading';
+import '../style/search.css';
 
 export default class Search extends Component {
   constructor() {
@@ -66,14 +67,15 @@ export default class Search extends Component {
       return <Loading />;
     }
     return (
-      <div data-testid="page-search">
+      <div data-testid="page-search" className="search">
         <Header />
-        <form>
+        <form className="formSearch">
+          <h2>Pesquisar Albuns:</h2>
           <input
             type="text"
             value={ inputPesquisa }
             name="pesquisarBanda"
-            placeholder="Nome do Artista"
+            placeholder="Digite o nome do Artista ou Banda"
             data-testid="search-artist-input"
             onChange={ this.enabledButton }
           />
@@ -89,24 +91,25 @@ export default class Search extends Component {
         </form>
         {
           nomePesquisado.length > 0
-          && <h3>{`Resultado de álbuns de: ${nomePesquisado}`}</h3>
+          && <h3 className="h3Search">{`Albuns de  ${nomePesquisado}:`}</h3>
         }
-
-        {
-          resultadoDaPesquisa.length > 0
-          && resultadoDaPesquisa.map((album) => (
-            <div key={ album.collectionId }>
-              <p>{`Nome do Album: ${album.collectionName}`}</p>
-              <Link
-                to={ `/album/${album.collectionId}` }
-                data-testid={ `link-to-album-${album.collectionId}` }
-              >
-                Ir para o Álbum
-              </Link>
-              <img src={ album.artworkUrl100 } alt={ album.collectionName } />
-            </div>
-          ))
-        }
+        <div className="cardsMusics">
+          {
+            resultadoDaPesquisa.length > 0
+            && resultadoDaPesquisa.map((album) => (
+              <div className="albunsEncontrados" key={ album.collectionId }>
+                <p>{`Nome do Album: ${album.collectionName}`}</p>
+                <img src={ album.artworkUrl100 } alt={ album.collectionName } />
+                <Link
+                  to={ `/album/${album.collectionId}` }
+                  data-testid={ `link-to-album-${album.collectionId}` }
+                >
+                  Ir para o Álbum
+                </Link>
+              </div>
+            ))
+          }
+        </div>
 
         {
           !resultadoDaPesquisa.length && <p>{pesquisaRetornouNada}</p>

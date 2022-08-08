@@ -1,0 +1,33 @@
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  height: 70px;
+  background-color: #181920;
+  align-items: center;
+  color: #5568FE;
+}
+
+.nav {
+  width: 35%;
+  display: flex;
+  justify-content: space-around;
+  margin-right: 20px;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+
+.link {
+  text-decoration: none;
+  color: #5568FE;
+}
+
+.link:hover {
+  opacity: 0.3;
+}
+
+.user {
+  font-size: 20px;
+  margin-left: 20px;
+  text-transform: uppercase;
+}

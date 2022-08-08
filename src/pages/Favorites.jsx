@@ -32,10 +32,9 @@ export default class Favorites extends Component {
     return (
       <div data-testid="page-favorites">
         <Header />
-        Favorites
         {
           !favoritesMusics || loading ? <Loading /> : (
-            <div>
+            <div className="musics">
               {favoritesMusics.map(
                 (music) => (
                   <MusicCard
